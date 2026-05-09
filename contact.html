@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Krishna Dubey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <!---<link rel="stylesheet" href="style.css"> --->
+
+
+
+  
+  <style>
+    :root {
+      --bg: #F1F1E2;
+      --text: #33372C;
+      --detail: #D5DAC2;
+      --gold: #C4AA70;
+      --dark-green: #4B523F;
+      --white: #ffffff;
+      --error: #c0392b;
+      --transition: 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding: 0 4vw;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--detail);
+      transition: box-shadow var(--transition);
+    }
+    header.scrolled { box-shadow: 0 2px 24px rgba(51,55,44,0.07); }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1rem, 1.25vw + 0.5rem, 1.35rem);
+      transition: color var(--transition);
+    }
+    .logo:hover { color: var(--gold); }
+
+    nav ul { display: flex; gap: 3rem; align-items: center; }
+    nav ul li a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color var(--transition);
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    nav ul li a:hover { color: var(--gold); }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a.active { color: var(--gold); }
+    nav ul li a.active::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--text);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 500;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .mobile-nav a:hover { color: var(--gold); transform: translateX(8px); }
+
+    main { padding-top: 64px; }
+
+    .contact-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: clamp(4rem, 8vmax, 10rem) 4vw clamp(5rem, 9vmax, 12rem);
+      text-align: center;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-section__heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .contact-section__subtext {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.88rem, 1vw, 1rem);
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 3.5rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-field label {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .form-field label .required { color: var(--gold); font-size: 0.85rem; }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--detail);
+      padding: 0.75rem 0;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition);
+      resize: none;
+      -webkit-appearance: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: #aaa9a0;
+      font-style: italic;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--gold); }
+    .form-field input.error,
+    .form-field textarea.error { border-color: var(--error); }
+
+    .form-field textarea { min-height: 140px; padding-top: 0.9rem; }
+
+    .field-error {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      color: var(--error);
+      display: none;
+      margin-top: 0.2rem;
+    }
+    .field-error.visible { display: block; }
+
+    .form-submit { align-self: center; margin-top: 0.5rem; }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.8rem;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-submit:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.14);
+    }
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+    .spinner {
+      display: none;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn-submit.loading .spinner { display: block; }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 1px solid var(--detail);
+      animation: fadeUp 0.6s ease both;
+    }
+    .success-message.visible { display: block; }
+    .success-message__icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      color: var(--gold);
+    }
+    .success-message h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .success-message p {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--detail);
+      padding: clamp(2rem, 3vmax, 3.5rem) 4vw;
+    }
+    .footer__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer__nav ul { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .footer__nav ul li a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .footer__nav ul li a:hover { color: var(--gold); }
+
+    .footer__social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--detail);
+      transition: color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .footer__social a:hover { color: var(--gold); border-color: var(--gold); transform: scale(1.12); }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__copyright { font-size: 0.78rem; font-weight: 300; }
+
+    .footer__back-to-top {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--detail);
+      cursor: pointer; background: none;
+      transition: border-color var(--transition), transform var(--transition), color var(--transition);
+    }
+    .footer__back-to-top:hover { border-color: var(--gold); transform: translateY(-3px); color: var(--gold); }
+    .footer__back-to-top svg { width: 14px; height: 14px; }
+
+    .pw-branding {
+      text-align: center; padding: 0.6rem;
+      font-size: 0.72rem; opacity: 0.45;
+      border-top: 1px solid var(--detail);
+    }
+    .pw-branding a { color: inherit; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .nav-toggle { display: flex; }
+      .footer__inner { grid-template-columns: 1fr; text-align: center; }
+      .footer__nav ul { justify-content: center; gap: 1.5rem; }
+      .footer__social, .footer__back-to-top { margin: 0 auto; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <header id="site-header">
+    <a href="index.html" class="logo">Krishna Dubey</a>
+    <nav>
+      <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="about.html">About</a></li>
+         <li><a href="work.html">Work</a></li>
+         <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="about.html" onclick="closeMobileNav()">About</a>
+    <a href="work.html" onclick="closeMobileNav()">Work</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <main>
+    <section class="contact-section">
+      <h2 class="contact-section__heading">Get in touch</h2>
+      <p class="contact-section__subtext">
+        Every great image starts with a conversation.<br><br>
+        I'd love to hear about your project — whether you're a photographer looking for a trusted editing partner, a real estate professional wanting listings that truly stand out, or a designer with a vision that deserves to be seen.<br><br>
+        Fill out the form below and I'll get back to you within 24 hours. Let's make something beautiful together.
+      </p>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-field">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="John Doe" maxlength="128" autocomplete="name">
+          <span class="field-error" id="name-error">Please enter your name.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="email">Email address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="Your email address" maxlength="128" autocomplete="email">
+          <span class="field-error" id="email-error">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea id="message" name="message" placeholder="Your message" maxlength="5500"></textarea>
+          <span class="field-error" id="message-error">Please enter your message.</span>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="spinner"></span>
+          </button>
+        </div>
+      </form>
+
+      <div class="success-message" id="success-message">
+        <div class="success-message__icon">✦</div>
+        <h3>Thank you for reaching out!</h3>
+        <p>Your message has been received. I'll get back to you within 24 hours.<br>Looking forward to creating something beautiful together.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer__inner">
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/krishna_d2.0/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer__copyright">© 2026 Krishna Dubey</p>
+      <button class="footer__back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+
+  <script>
+    // Sticky header
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile nav
+    const toggle = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    function closeMobileNav() {
+      toggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Form validation
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function setError(fieldId, errorId, show) {
+      document.getElementById(fieldId).classList.toggle('error', show);
+      document.getElementById(errorId).classList.toggle('visible', show);
+    }
+
+    ['name', 'email', 'message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        document.getElementById(id).classList.remove('error');
+        document.getElementById(id + '-error').classList.remove('visible');
+      });
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      let valid = true;
+
+      setError('name', 'name-error', !name); if (!name) valid = false;
+      setError('email', 'email-error', !validateEmail(email)); if (!validateEmail(email)) valid = false;
+      setError('message', 'message-error', !message); if (!message) valid = false;
+
+      if (!valid) return;
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.classList.add('loading');
+
+      // Simulate sending with a delay, then show success
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('success-message').classList.add('visible');
+      }, 1400);
+    });
+  </script>
+</body>
+</html>

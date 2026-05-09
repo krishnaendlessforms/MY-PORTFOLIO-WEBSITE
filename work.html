@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work - Krishna Dubey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F1F1E2;
+      --text: #33372C;
+      --detail: #D5DAC2;
+      --gold: #C4AA70;
+      --dark-green: #4B523F;
+      --white: #ffffff;
+      --transition: 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding: 0 4vw;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--detail);
+      transition: box-shadow var(--transition);
+    }
+    header.scrolled { box-shadow: 0 2px 24px rgba(51,55,44,0.07); }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1rem, 1.25vw + 0.5rem, 1.35rem);
+      transition: color var(--transition);
+    }
+    .logo:hover { color: var(--gold); }
+
+    nav ul { display: flex; gap: 3rem; align-items: center; }
+    nav ul li a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color var(--transition);
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    nav ul li a:hover { color: var(--gold); }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a.active { color: var(--gold); }
+    nav ul li a.active::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 1.5px;
+      background: var(--text);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 500;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .mobile-nav a:hover { color: var(--gold); transform: translateX(8px); }
+
+    /* ===== MAIN ===== */
+    main { padding-top: 64px; }
+
+    /* ===== PORTFOLIO GRID ===== */
+    .portfolio {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vmax, 6rem) 4vw clamp(2rem, 4vmax, 4rem);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    /* Each portfolio item: image + caption below */
+    .portfolio-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .portfolio-item.visible { opacity: 1; transform: translateY(0); }
+    .portfolio-item:nth-child(2) { transition-delay: 0.1s; }
+    .portfolio-item:nth-child(3) { transition-delay: 0.15s; }
+    .portfolio-item:nth-child(4) { transition-delay: 0.2s; }
+
+    .portfolio-item__img-wrap {
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: var(--detail);
+    }
+    .portfolio-item__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+    }
+    /* Dark overlay on hover */
+    .portfolio-item__img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.5s ease;
+      pointer-events: none;
+    }
+    .portfolio-item__img-wrap:hover::after { background: rgba(0,0,0,0.15); }
+    .portfolio-item__img-wrap:hover img { transform: scale(1.05); }
+
+    .portfolio-item__caption {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .portfolio-item__title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1rem, 1.1vw, 1.18rem);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color var(--transition);
+    }
+    .portfolio-item:hover .portfolio-item__title { color: var(--gold); }
+
+    .portfolio-item__link {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--gold);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .portfolio-item__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 1px;
+      background: var(--gold);
+      transition: left var(--transition), right var(--transition);
+    }
+    .portfolio-item:hover .portfolio-item__link::after { left: 0; right: 0; }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      border-top: 1px solid var(--detail);
+      padding: clamp(4rem, 7vmax, 9rem) 4vw clamp(5rem, 8vmax, 10rem);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .cta-banner__label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .cta-banner__heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+      line-height: 1.3;
+      color: var(--text);
+      max-width: 560px;
+    }
+    .cta-banner__btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.4rem;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .cta-banner__btn:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.14);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--detail);
+      padding: clamp(2rem, 3vmax, 3.5rem) 4vw;
+    }
+    .footer__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer__nav ul { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .footer__nav ul li a {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .footer__nav ul li a:hover { color: var(--gold); }
+
+    .footer__social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--detail);
+      transition: color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .footer__social a:hover { color: var(--gold); border-color: var(--gold); transform: scale(1.12); }
+    .footer__social svg { width: 15px; height: 15px; }
+
+    .footer__copyright { font-size: 0.78rem; font-weight: 300; }
+
+    .footer__back-to-top {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--detail);
+      cursor: pointer; background: none;
+      transition: border-color var(--transition), transform var(--transition), color var(--transition);
+    }
+    .footer__back-to-top:hover { border-color: var(--gold); transform: translateY(-3px); color: var(--gold); }
+    .footer__back-to-top svg { width: 14px; height: 14px; }
+
+    .pw-branding {
+      text-align: center; padding: 0.6rem;
+      font-size: 0.72rem; opacity: 0.45;
+      border-top: 1px solid var(--detail);
+    }
+    .pw-branding a { color: inherit; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .nav-toggle { display: flex; }
+
+      .footer__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer__nav ul { justify-content: center; gap: 1.5rem; }
+      .footer__social, .footer__back-to-top { margin: 0 auto; }
+    }
+
+    @media (max-width: 600px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="index.html" class="logo">Krishna Dubey</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="about.html" onclick="closeMobileNav()">About</a>
+    <a href="work.html" onclick="closeMobileNav()">Work</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+
+  </div>
+
+  <main>
+
+    <!-- PORTFOLIO GRID -->
+    <section class="portfolio">
+      <div class="portfolio-grid">
+
+        <!-- 1: Winter Sun -->
+        <div class="portfolio-item">
+          <a href="winter-sun.html" class="portfolio-item__img-wrap">
+            <img
+              src="https://images-pw.pixieset.com/site/NV4471/QlW6Lb/IQ1A8264_2-e7401277-1500.jpg"
+              srcset="https://images-pw.pixieset.com/site/NV4471/QlW6Lb/IQ1A8264_2-4bf8479f-300.jpg 300w,
+                      https://images-pw.pixieset.com/site/NV4471/QlW6Lb/IQ1A8264_2-b00db5b3-500.jpg 500w,
+                      https://images-pw.pixieset.com/site/NV4471/QlW6Lb/IQ1A8264_2-e7401277-1500.jpg 1500w"
+              sizes="(min-width: 900px) 45vw, 100vw"
+              alt="Winter Sun gallery"
+              loading="lazy"
+            >
+          </a>
+          <div class="portfolio-item__caption">
+            <p class="portfolio-item__title">Winter Sun</p>
+            <a href="#" class="portfolio-item__link">View Gallery</a>
+          </div>
+        </div>
+
+        <!-- 2: Maroney -->
+        <div class="portfolio-item">
+          <!---Vee- this href is the link from where if user clicks on image it would redirect to that specific project-->
+          <a href="#" class="portfolio-item__img-wrap">
+            <img
+              src="https://images-pw.pixieset.com/site/NV4471/8XMwXK/288A4692-71b69a97-1500.jpg"
+              srcset="https://images-pw.pixieset.com/site/NV4471/8XMwXK/288A4692-dd0ecf7f-300.jpg 300w,
+                      https://images-pw.pixieset.com/site/NV4471/8XMwXK/288A4692-26fb3d53-500.jpg 500w,
+                      https://images-pw.pixieset.com/site/NV4471/8XMwXK/288A4692-71b69a97-1500.jpg 1500w"
+              sizes="(min-width: 900px) 45vw, 100vw"
+              alt="Maroney gallery"
+              loading="lazy"
+            >
+          </a>
+          <div class="portfolio-item__caption">
+            <p class="portfolio-item__title">Maroney</p>
+            <a href="#" class="portfolio-item__link">View Gallery</a>
+          </div>
+        </div>
+
+        <!-- 3: San Diego -->
+        <div class="portfolio-item">
+          <a href="winter-sun.html" class="portfolio-item__img-wrap">
+            <img
+              src="https://images-pw.pixieset.com/site/NV4471/WWYb51/IQ1A1453-5e3fe533-1500.jpg"
+              srcset="https://images-pw.pixieset.com/site/NV4471/WWYb51/IQ1A1453-f287b0db-300.jpg 300w,
+                      https://images-pw.pixieset.com/site/NV4471/WWYb51/IQ1A1453-097242f7-500.jpg 500w,
+                      https://images-pw.pixieset.com/site/NV4471/WWYb51/IQ1A1453-5e3fe533-1500.jpg 1500w"
+              sizes="(min-width: 900px) 45vw, 100vw"
+              alt="San Diego gallery"
+              loading="lazy"
+            >
+          </a>
+          <div class="portfolio-item__caption">
+            <p class="portfolio-item__title">San Diego</p>
+            <span class="portfolio-item__link">View Gallery</span>
+          </div>
+        </div>
+
+        <!-- 4: Gallery 04 -->
+        <div class="portfolio-item">
+          <div class="portfolio-item__img-wrap">
+            <img
+              src="https://images-pw.pixieset.com/site/NV4471/q0qWdo/IQ1A8813-2bd77f23-1500.jpg"
+              srcset="https://images-pw.pixieset.com/site/NV4471/q0qWdo/IQ1A8813-876f2acb-300.jpg 300w,
+                      https://images-pw.pixieset.com/site/NV4471/q0qWdo/IQ1A8813-7c9ad8e7-500.jpg 500w,
+                      https://images-pw.pixieset.com/site/NV4471/q0qWdo/IQ1A8813-2bd77f23-1500.jpg 1500w"
+              sizes="(min-width: 900px) 45vw, 100vw"
+              alt="Gallery 04"
+              loading="lazy"
+              style="object-position: 97% 48%;"
+            >
+          </div>
+          <div class="portfolio-item__caption">
+            <p class="portfolio-item__title">Gallery 04</p>
+            <span class="portfolio-item__link">View Gallery</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+      <p class="cta-banner__label">Get in Touch</p>
+      <h2 class="cta-banner__heading">Let's craft memories that last a lifetime</h2>
+      <a href="contact.html" class="cta-banner__btn">Contact Me</a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer__inner">
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/krishna_d2.0/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer__copyright">© 2026 Krishna Dubey</p>
+      <button class="footer__back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+
+  <script>
+    // Sticky header shadow
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile nav
+    const toggle = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    function closeMobileNav() {
+      toggle.classList.remove('open');
+      mobileNav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Scroll reveal
+    const items = document.querySelectorAll('.portfolio-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Krishna Dubey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="site-header">
+    <a href="/" class="logo">Krishna Dubey</a>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <a href="#" onclick="closeMobileNav()">Home</a>
+    <a href="#about" onclick="closeMobileNav()">About</a>
+    <a href="#work" onclick="closeMobileNav()">Work</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" style="padding-top: 0;">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Dive into my Story</p>
+      <h1 class="hero__title">This is how edit brings life into your shots</h1>
+      <div class="hero__buttons">
+        <a href="#about" class="btn btn-primary">About Me</a>
+        <a href="#work" class="btn btn-secondary">Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEXT BLOCK ===== -->
+  <section class="text-block" id="about">
+    <div class="text-block__inner reveal">
+      <p class="label-text">Editing with a purpose</p>
+      <h2 class="heading-2">High-End Retouching for Spaces That Demand Perfection.</h2>
+      <p class="para-2">Elevating architectural, interior, and real estate photography one frame at a time. High-End Retouching for Spaces That Demand Perfection. Elevating architectural, interior, and real estate photography one frame at a time.</p>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY GRID ===== -->
+  <section class="gallery-grid" id="work">
+    <div class="gallery-grid__inner">
+      <div class="gallery-grid__img gallery-grid__img--left reveal">
+        <img
+          src="./assets/images/_.webp"
+          sizes="(min-width: 900px) 25vw, 50vw"
+          alt="Photography sample 1"
+          loading="lazy"
+        >
+      </div>
+      <div class="gallery-grid__img gallery-grid__img--center reveal" style="transition-delay:0.12s">
+        <img
+          src="https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-affdc757-1500.jpg"
+          srcset="https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-034592bf-300.jpg 300w,
+                  https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-f8b06093-500.jpg 500w,
+                  https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-affdc757-1500.jpg 1500w"
+          sizes="(min-width: 900px) 40vw, 100vw"
+          alt="Photography sample — center"
+          loading="lazy"
+          style="object-fit:cover; height:100%; object-position:50% 50%;"
+        >
+      </div>
+      <div class="gallery-grid__img gallery-grid__img--right reveal" style="transition-delay:0.24s">
+        <img
+          src="https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-70be3fda-1500.jpg"
+          srcset="https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-dc066a32-300.jpg 300w,
+                  https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-27f3981e-500.jpg 500w,
+                  https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-70be3fda-1500.jpg 1500w"
+          sizes="(min-width: 900px) 25vw, 50vw"
+          alt="Photography sample 3"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE SECTION ===== -->
+  <section class="quote-section">
+    <div class="quote-section__bg"></div>
+    <div class="quote-section__overlay"></div>
+    <div class="quote-section__content reveal">
+      <p class="quote-text">"My goal is to help shape a future where editing is not just a backend process, but a recognized creative contribution where a style can be identified by the editor behind it."</p>
+      <p class="quote-author">— Krishna Dubey</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contact">
+    <div class="footer__inner">
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+           <li><a href="about.html" class="active">About</a></li>
+           <li><a href="work.html">Work</a></li>
+           <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__social">
+        <a href="https://www.instagram.com/krishna_d2.0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <!-- Instagram SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="footer__copyright">© 2026 Krishna Dubey</p>
+
+      <button class="footer__back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <!---
+  <div class="pw-branding">Powered by <a href="https://pixieset.com" target="_blank" rel="noopener">Pixieset</a></div> -->
+
+ 
+</body>
+</html>
