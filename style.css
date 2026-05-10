@@ -655,4 +655,41 @@ body {
   color: #33372C;
 }
 
+/* HEADER NAVIGATION HOVER EFFECT */
+nav ul li a {
+  position: relative;
+
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+/* underline */
+nav ul li a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+
+  height: 1px;
+
+  background-color: #C4AA70;
+
+  transition: width 0.3s ease;
+}
+
+/* hover animation */
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* optional text color change */
+nav ul li a:hover {
+  color: #C4AA70;
+}
+
   </style>
