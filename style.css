@@ -413,6 +413,7 @@
       background: var(--bg);
       border-top: 1px solid var(--detail);
       padding: clamp(2rem, 3vmax, 3.5rem) 4vw;
+      
     }
     .footer__inner {
       max-width: 1400px;
@@ -645,7 +646,9 @@
 }
 
 body {
-  overflow-x: hidden;
+  /*overflow-x: hidden; */
+  background-color: #F1F1E2; 
+  color: #33372C;
 }
 
   </style>
