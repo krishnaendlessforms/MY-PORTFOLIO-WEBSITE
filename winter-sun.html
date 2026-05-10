@@ -231,6 +231,24 @@
       .footer-nav ul { flex-wrap: wrap; justify-content: center; gap: 1.25rem; }
     }
     @media (max-width: 480px) { .grid { gap: 6px; } }
+
+    img {
+      max-width: 100%;
+       height: auto;
+    }
+
+    .gallery-grid__img img {
+       object-fit: cover;
+       border-radius: 4px;
+    }
+
+    @media (max-width: 768px) 
+    {
+      .nav-toggle 
+      {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>

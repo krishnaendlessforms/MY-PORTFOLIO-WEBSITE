@@ -28,14 +28,16 @@
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+    
   </header>
+
 
   <!-- Mobile Nav Overlay -->
   <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <a href="#" onclick="closeMobileNav()">Home</a>
-    <a href="#about" onclick="closeMobileNav()">About</a>
-    <a href="#work" onclick="closeMobileNav()">Work</a>
-    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="index.html" onclick="closeMobileNav()">Home</a>
+    <a href="about.html" onclick="closeMobileNav()">About</a>
+    <a href="work.html" onclick="closeMobileNav()">Work</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
   </div>
 
   <!-- ===== HERO ===== -->
@@ -139,8 +141,21 @@
     </div>
   </footer>
 
-  <!---
-  <div class="pw-branding">Powered by <a href="https://pixieset.com" target="_blank" rel="noopener">Pixieset</a></div> -->
+
+<script>
+const toggle = document.getElementById("nav-toggle");
+const mobileNav = document.getElementById("mobile-nav");
+
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("open");
+  mobileNav.classList.toggle("open");
+});
+
+function closeMobileNav() {
+  toggle.classList.remove("open");
+  mobileNav.classList.remove("open");
+}
+</script>
 
  
 </body>

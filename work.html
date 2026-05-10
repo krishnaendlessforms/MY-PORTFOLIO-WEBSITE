@@ -40,6 +40,14 @@
       border-bottom: 1px solid var(--detail);
       transition: box-shadow var(--transition);
     }
+
+    /* =========================
+      NAVIGATION
+   ========================= */
+  .nav-toggle {
+    display: none;
+  }
+
     header.scrolled { box-shadow: 0 2px 24px rgba(51,55,44,0.07); }
 
     .logo {
@@ -326,6 +334,25 @@
         grid-template-columns: 1fr;
       }
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .gallery-grid__img img {
+       object-fit: cover;
+       border-radius: 4px;
+    }
+
+    @media (max-width: 768px) 
+    {
+      .nav-toggle 
+      {
+        display: flex;
+      }
+    }
+
   </style>
 </head>
 <body>

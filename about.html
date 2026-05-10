@@ -392,6 +392,25 @@
       .footer__nav ul { justify-content: center; gap: 1.5rem; }
       .footer__social, .footer__back-to-top { margin: 0 auto; }
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .gallery-grid__img img {
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 768px) 
+    {
+      .nav-toggle 
+      {
+        display: flex;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -441,7 +460,7 @@
         <p class="bio__label">Meet the Editor</p>
         <h1 class="bio__name">Hi, I'm Krishna Dubey.</h1>
         <p class="bio__body">I'm a Mumbai based retoucher specializing in high-end luxury real estate and interior imagery. What started in 2021 as a way to simply pay the bills quickly turned into something much deeper.</p>
-        <a href="krishna-dubey-contact.html" class="bio__btn">Get in Touch</a>
+        <a href="contact.html" class="bio__btn">Get in Touch</a>
       </div>
     </section>
 
