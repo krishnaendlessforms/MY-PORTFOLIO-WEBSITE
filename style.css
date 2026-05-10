@@ -394,6 +394,7 @@
       letter-spacing: 0.14em;
       font-family: 'Playfair Display', serif;
       color:  white; 
+      text-transform: uppercase;
     }
     .quote-author {
       /*
