@@ -156,7 +156,7 @@
     .hero__bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images-pw.pixieset.com/site/NV4471/xW0mEP/IQ1A8264_2-11186ae3-1500.jpg');
+      background-image: url('./assets/images/winter-sun/IQ1A8264_2.jpg');
       background-size: cover;
       background-position: 50% 50%;
       transform: scale(1.05);

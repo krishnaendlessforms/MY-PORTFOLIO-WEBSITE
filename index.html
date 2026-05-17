@@ -63,23 +63,19 @@
     </div>
   </section>
 
-  <!-- ===== GALLERY GRID ===== -->
+  <!-- ===== GALLERY GRID ===== ===-->
   <section class="gallery-grid" id="work">
     <div class="gallery-grid__inner">
       <div class="gallery-grid__img gallery-grid__img--left reveal">
         <img
-          src="./assets/images/temp1.webp"
-          sizes="(min-width: 900px) 25vw, 50vw"
+          src="./assets/images/Gallery/288A4763-5d4e926c-1000.jpg"
           alt="Photography sample 1"
           loading="lazy"
         >
       </div>
       <div class="gallery-grid__img gallery-grid__img--center reveal" style="transition-delay:0.12s">
         <img
-          src="https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-affdc757-1500.jpg"
-          srcset="https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-034592bf-300.jpg 300w,
-                  https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-f8b06093-500.jpg 500w,
-                  https://images-pw.pixieset.com/site/NV4471/YPwVkQ/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-affdc757-1500.jpg 1500w"
+          src="./assets/images/Gallery/3FA45922-5438-409C-A7E3-BE48A7AAF770_LOGO-affdc757-1500.jpg"
           sizes="(min-width: 900px) 40vw, 100vw"
           alt="Photography sample — center"
           loading="lazy"
@@ -88,10 +84,7 @@
       </div>
       <div class="gallery-grid__img gallery-grid__img--right reveal" style="transition-delay:0.24s">
         <img
-          src="https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-70be3fda-1500.jpg"
-          srcset="https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-dc066a32-300.jpg 300w,
-                  https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-27f3981e-500.jpg 500w,
-                  https://images-pw.pixieset.com/site/NV4471/xW0max/288A5397-70be3fda-1500.jpg 1500w"
+          src="./assets/images/Gallery/288A5397-70be3fda-1500.jpg"
           sizes="(min-width: 900px) 25vw, 50vw"
           alt="Photography sample 3"
           loading="lazy"
@@ -143,6 +136,12 @@
 
 
 <script>
+
+   const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+    
 const toggle = document.getElementById("nav-toggle");
 const mobileNav = document.getElementById("mobile-nav");
 
