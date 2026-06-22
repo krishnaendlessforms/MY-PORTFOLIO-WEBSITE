@@ -11,19 +11,19 @@
 	<E K="CameraDisplayName" V="Jpeg File" />
 	<E K="Exp_Aperture" V="10" />
 	<E K="Exp_ColorSpace" V="sRGB IEC61966-2.1" />
-	<E K="Exp_Date" V="1759239571.300000" />
+	<E K="Exp_Date" V="1759242074.130000" />
 	<E K="Exp_ExposureCompensation" V="0/1" />
 	<E K="Exp_ExposureMode" V="1" />
 	<E K="Exp_ExposureProg" V="1" />
 	<E K="Exp_FlashCompensation" V="0/1" />
 	<E K="Exp_FlashMode" V="9" />
-	<E K="Exp_FocalLength" V="27" />
+	<E K="Exp_FocalLength" V="24" />
 	<E K="Exp_Format" V="JPEG" />
 	<E K="Exp_MeteringMode" V="5" />
-	<E K="Exp_ShutterSpeed" V="0.200000002980232" />
+	<E K="Exp_ShutterSpeed" V="0.0769230797886848" />
 	<E K="Exp_WhiteBalance" V="0" />
-	<E K="File_Size" V="30711416" />
-	<E K="Height" V="5423" />
+	<E K="File_Size" V="28887795" />
+	<E K="Height" V="5402" />
 	<E K="ImageClassification" V="19" />
 	<E K="ISO" V="250" />
 	<E K="MultiShotCount" V="0" />
@@ -32,9 +32,9 @@
 	<E K="MultiShotType" V="4294967295" />
 	<E K="PixelHeight" V="0" />
 	<E K="PixelWidth" V="0" />
-	<E K="UUID" V="E9301FF1-8F09-4CFF-95E7-370DEDD4FAE3" />
+	<E K="UUID" V="F9417656-4DA7-4BF1-B0F8-072A0A8D6654" />
 	<E K="Version" V="1530" />
-	<E K="Width" V="8131" />
+	<E K="Width" V="8100" />
 	<VAR Engine="1300">
 		<E K="HighResProcessCounter" V="0" />
 		<E K="LastMetadataModificationDate" V="-62135596800.000000" />
@@ -42,7 +42,7 @@
 		<E K="ProductID" V="FileSystemJpeg" />
 		<E K="RawMetadataModificationDate" V="-62135596800.000000" />
 		<E K="SyncProcessCounter" V="0" />
-		<E K="UUID" V="3CE5FA54-6A86-40FD-A016-0BA3880DEBBD" />
+		<E K="UUID" V="B49DDE00-E8B8-48D3-9464-FE29AB365C59" />
 		<E K="XMPMetadataModificationdate" V="-62135596800.000000" />
 		<DL>
 			<E K="BlackRecovery" V="0" />
@@ -98,7 +98,7 @@
 			<E K="Image_DateCreated" V="20250930" />
 			<E K="Image_Scene" V="" />
 			<E K="LensAperture" V="10" />
-			<E K="LensFocalLength" V="27" />
+			<E K="LensFocalLength" V="24" />
 			<E K="LensGeoAbr" V="|0.000000|1|0|0" />
 			<E K="LensLccLightFalloffAmount" V="0" />
 			<E K="LensTilt" V="0" />
@@ -141,8 +141,8 @@
 		<AL />
 		<PHS>
 			<PH>
-				<E K="URL" V="D:\MY  PORTFOLIO-2\MY-PORTFOLIO-WEBSITE\assets\images\Maroney\Low Res\IQ1A3905.jpg" />
-				<E K="Date" V="1782137681.314796" />
+				<E K="URL" V="D:\MY  PORTFOLIO-2\MY-PORTFOLIO-WEBSITE\assets\images\Maroney\Low Res\IQ1A4103.jpg" />
+				<E K="Date" V="1782137688.437551" />
 			</PH>
 		</PHS>
 	</VAR>

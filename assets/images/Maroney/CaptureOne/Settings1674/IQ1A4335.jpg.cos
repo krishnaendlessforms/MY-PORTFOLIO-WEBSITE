@@ -2,28 +2,28 @@
 <IMG>
 	<E K="Author" V="16.7.7.3470 Pro Win" />
 	<E K="Camera_Firmware" V="Firmware Version 1.9.0" />
-	<E K="Camera_Lens" V="Canon EF 16-35mm f2.8L III USM" />
+	<E K="Camera_Lens" V="Canon TS-E 24.0mm f/3.5 L II" />
 	<E K="Camera_Make" V="Canon" />
 	<E K="Camera_Model" V="Canon EOS R5" />
 	<E K="Camera_Owner" V="Tom Riggs" />
 	<E K="Camera_Serial" V="042021006741" />
 	<E K="Camera_Software" V="Capture One Windows" />
 	<E K="CameraDisplayName" V="Jpeg File" />
-	<E K="Exp_Aperture" V="10" />
+	<E K="Exp_Aperture" V="9" />
 	<E K="Exp_ColorSpace" V="sRGB IEC61966-2.1" />
-	<E K="Exp_Date" V="1759239571.300000" />
-	<E K="Exp_ExposureCompensation" V="0/1" />
-	<E K="Exp_ExposureMode" V="1" />
-	<E K="Exp_ExposureProg" V="1" />
+	<E K="Exp_Date" V="1759246232.790000" />
+	<E K="Exp_ExposureCompensation" V="3/1" />
+	<E K="Exp_ExposureMode" V="2" />
+	<E K="Exp_ExposureProg" V="3" />
 	<E K="Exp_FlashCompensation" V="0/1" />
-	<E K="Exp_FlashMode" V="9" />
-	<E K="Exp_FocalLength" V="27" />
+	<E K="Exp_FlashMode" V="0" />
+	<E K="Exp_FocalLength" V="24" />
 	<E K="Exp_Format" V="JPEG" />
 	<E K="Exp_MeteringMode" V="5" />
-	<E K="Exp_ShutterSpeed" V="0.200000002980232" />
+	<E K="Exp_ShutterSpeed" V="0.0199999995529652" />
 	<E K="Exp_WhiteBalance" V="0" />
-	<E K="File_Size" V="30711416" />
-	<E K="Height" V="5423" />
+	<E K="File_Size" V="37339734" />
+	<E K="Height" V="5402" />
 	<E K="ImageClassification" V="19" />
 	<E K="ISO" V="250" />
 	<E K="MultiShotCount" V="0" />
@@ -32,9 +32,9 @@
 	<E K="MultiShotType" V="4294967295" />
 	<E K="PixelHeight" V="0" />
 	<E K="PixelWidth" V="0" />
-	<E K="UUID" V="E9301FF1-8F09-4CFF-95E7-370DEDD4FAE3" />
+	<E K="UUID" V="954AEEC3-DEC9-4024-8507-E148B339AD8C" />
 	<E K="Version" V="1530" />
-	<E K="Width" V="8131" />
+	<E K="Width" V="8099" />
 	<VAR Engine="1300">
 		<E K="HighResProcessCounter" V="0" />
 		<E K="LastMetadataModificationDate" V="-62135596800.000000" />
@@ -42,7 +42,7 @@
 		<E K="ProductID" V="FileSystemJpeg" />
 		<E K="RawMetadataModificationDate" V="-62135596800.000000" />
 		<E K="SyncProcessCounter" V="0" />
-		<E K="UUID" V="3CE5FA54-6A86-40FD-A016-0BA3880DEBBD" />
+		<E K="UUID" V="28346EC0-FCC8-4F98-98B6-B59BF9E31867" />
 		<E K="XMPMetadataModificationdate" V="-62135596800.000000" />
 		<DL>
 			<E K="BlackRecovery" V="0" />
@@ -97,8 +97,8 @@
 			<E K="ICCProfile" V="EMBEDDED" />
 			<E K="Image_DateCreated" V="20250930" />
 			<E K="Image_Scene" V="" />
-			<E K="LensAperture" V="10" />
-			<E K="LensFocalLength" V="27" />
+			<E K="LensAperture" V="9" />
+			<E K="LensFocalLength" V="24" />
 			<E K="LensGeoAbr" V="|0.000000|1|0|0" />
 			<E K="LensLccLightFalloffAmount" V="0" />
 			<E K="LensTilt" V="0" />
@@ -141,8 +141,8 @@
 		<AL />
 		<PHS>
 			<PH>
-				<E K="URL" V="D:\MY  PORTFOLIO-2\MY-PORTFOLIO-WEBSITE\assets\images\Maroney\Low Res\IQ1A3905.jpg" />
-				<E K="Date" V="1782137681.314796" />
+				<E K="URL" V="D:\MY  PORTFOLIO-2\MY-PORTFOLIO-WEBSITE\assets\images\Maroney\Low Res\IQ1A4335.jpg" />
+				<E K="Date" V="1782137689.493152" />
 			</PH>
 		</PHS>
 	</VAR>
